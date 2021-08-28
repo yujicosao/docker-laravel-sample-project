@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'IndexController@index')->name('top');
+
+// news
+Route::resource('news', 'NewsController');
