@@ -19,7 +19,14 @@
     <div class="row">
       @foreach($news as $notice)
         <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
-          <a href="single.html"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
+          <a href="single.html">
+            @if ($notice->file_name)
+              <img src="{{ asset('storage/images/' . $notice->file_name) }}" style="width:100%">
+            @else
+              <img src="https://placehold.jp/1900x1268.png?text=No Image" style="width:100%">
+              
+            @endif
+          </a>
           <div class="p-4 bg-white">
             <span class="d-block text-secondary small text-uppercase">{{ $notice->created_at }}</span>
             <h2 class="h5 text-black mb-3"><a href="single.html">{{ $notice->title }}</a></h2>
