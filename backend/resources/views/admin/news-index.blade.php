@@ -215,9 +215,9 @@
                     </div><!-- pageheader -->
                     
                     <div class="contentpanel">
-                          <h5 class="lg-title mb5">Colored Tables</h5>
-                              <p class="mb20">An example of colored tables in the header</p>
-                              
+                            <p class="mb20">
+                              <a href="{{ route('admin-news.create') }}" class="btn btn-primary">新規作成</a>
+                            </p>
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="table-responsive">

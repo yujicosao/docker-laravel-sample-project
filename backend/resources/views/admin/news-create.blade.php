@@ -268,6 +268,15 @@
                                             </div><!-- panel-btns -->
                                             <h4 class="panel-title">お知らせフォーム</h4>
                                             <p>全ての項目の入力が必須です</p>
+                                            @if ($errors->any())
+                                                <div class="alert alert-danger">
+                                                    <ul>
+                                                        @foreach ($errors->all() as $error)
+                                                            <li>{{ $error }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            @endif
                                         </div>
                                         <div class="panel-body">
                                             <div class="form-group">

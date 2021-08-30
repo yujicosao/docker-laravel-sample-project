@@ -250,7 +250,7 @@
                                     <li><a href="">Forms</a></li>
                                     <li>お知らせフォーム</li>
                                 </ul>
-                                <h4>新規お知らせ作成</h4>
+                                <h4>お知らせ更新</h4>
                             </div>
                         </div><!-- media -->
                     </div><!-- pageheader -->
@@ -269,6 +269,15 @@
                                             </div><!-- panel-btns -->
                                             <h4 class="panel-title">お知らせフォーム</h4>
                                             <p>全ての項目の入力が必須です</p>
+                                            @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         </div>
                                         <div class="panel-body">
                                             <div class="form-group">

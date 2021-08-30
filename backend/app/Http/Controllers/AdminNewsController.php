@@ -36,6 +36,11 @@ class AdminNewsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'messages' => 'required',
+        ]);
+
         $notice = new News;
 
         $notice->title = $request->input('title');
@@ -79,8 +84,13 @@ class AdminNewsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'title' => 'required',
+            'messages' => 'required',
+        ]);
+
         $notice=News::find($id);
-        
+
         $notice->title = $request->input('title');
         $notice->messages = $request->input('messages');
 
