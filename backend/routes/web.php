@@ -14,5 +14,5 @@
 Route::get('/', 'IndexController@index')->name('top');
 Route::get('news', 'NewsController@index')->name('news');
 
-// news
-// Route::resource('admin/news', 'AdminNewsController');
+// admin news
+Route::resource('admin/news', 'AdminNewsController');
