@@ -39,13 +39,19 @@ class AdminNewsController extends Controller
         $request->validate([
             'title' => 'required',
             'messages' => 'required',
+            // 'file_name' => 'required'
         ]);
+
+        // 画像ファイル保存
+        logger($request->img);
+        $path = $request->img->store('public/images');
+        $filename = basename($path);
 
         $notice = new News;
 
         $notice->title = $request->input('title');
         $notice->messages = $request->input('messages');
-
+        $notice->file_name = $filename;
         $notice->save();
 
         return redirect('admin-news');

@@ -242,6 +242,7 @@
                                     </table>
                                 </div><!-- table-responsive -->
                             </div>
+                            <img src="{{ asset('storage/images/' . $notice->file_name) }}" style="max-width:90%;margin:0 auto; display:block;">
                           </div><!-- row -->
                     </div><!-- contentpanel -->
                 </div><!-- mainpanel -->

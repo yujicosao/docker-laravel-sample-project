@@ -36,9 +36,7 @@
                     
                     <div class="pull-right">
                         
-                        <form class="form form-search" action="search-results.html">
-                            <input type="search" class="form-control" placeholder="Search" />
-                        </form>
+
                         
                         <div class="btn-group btn-group-list btn-group-notification">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -258,7 +256,7 @@
                     <div class="contentpanel">
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form-horizontal" method="POST" action="{{ route('admin-news.store') }}">
+                                <form class="form-horizontal" method="POST" action="{{ route('admin-news.store') }}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -285,7 +283,12 @@
                                                     <input type="text" name="title" class="form-control" />
                                                 </div>
                                             </div><!-- form-group -->
-                                        
+                                            <div class="form-group">
+                                                <label class="col-sm-1 control-label">アイキャッチ画像:</label>
+                                                <div class="col-sm-8">
+                                                    <input type="file" name="img" accept=".png,.jpg,.jpeg,image/png,image/jpg" class="form-control" />
+                                                </div>
+                                            </div><!-- form-group -->      
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label">本文:</label>
                                                 <div class="col-sm-8">
