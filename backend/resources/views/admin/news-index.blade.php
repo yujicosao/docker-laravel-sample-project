@@ -228,15 +228,26 @@
                                             <th style="width: 10%">タイトル</th>
                                             <th style="width: 30%">本文</th>
                                             <th style="width: 10%">作成日</th>
+                                            <th style="width: 10%"></th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                           @foreach($news as $notice)
                                             <tr>
-                                              <td><a href="{{ route('news.show', $notice->id) }}">{{ $notice->id }}</a></td>
+                                              <td><a href="{{ route('admin-news.show', $notice->id) }}">{{ $notice->id }}</a></td>
                                               <td>{{ $notice->title }}</td>
                                               <td>{{ $notice->messages }}</td>
                                               <td>{{ $notice->created_at }}</td>
+                                              <td>
+                                                <div class="btn-list" style="display:flex;justify-content: flex-end;">
+                                                  <a href="{{ route('admin-news.edit', $notice->id)}}" class="btn btn-primary">更新</a>
+                                                  <form class="form-horizontal" method="POST" action="{{ route('admin-news.destroy', $notice->id) }}">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    <button class="btn btn-danger delete_btn" type="submit">削除</button>
+                                                  </form>
+                                              </div>
+                                              </td>
                                             </tr>
                                             <tr>
                                           @endforeach
@@ -251,27 +262,28 @@
         </section>
 
 
-        <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="js/jquery-migrate-1.2.1.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/modernizr.min.js"></script>
-        <script src="js/pace.min.js"></script>
-        <script src="js/retina.min.js"></script>
-        <script src="js/jquery.cookies.js"></script>
+        <script src="{{ asset('admin/js/jquery-1.11.1.min.js') }}"></script>
+        <script src="{{ asset('admin/js/jquery-migrate-1.2.1.min.js') }}"></script>
 
-        <script src="js/custom.js"></script>
+        <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('admin/js/modernizr.min.js') }}"></script>
+        <script src="{{ asset('admin/js/pace.min.js') }}"></script>
+        <script src="{{ asset('admin/js/retina.min.js') }}"></script>
+        <script src="{{ asset('admin/js/jquery.cookies.js') }}"></script>
+
+        <script src="{{ asset('admin/js/custom.js') }}"></script>
         <script>
             jQuery(document).ready(function(){
-                
-                // Delete row in a table
-                jQuery('.delete-row').click(function(){
-                    var c = confirm("Continue delete?");
-                    if(c)
-                        jQuery(this).closest('tr').fadeOut(function(){
-                        jQuery(this).remove();
-                    });
-                    return false;
-                });
+              $(".delete_btn").click(function(){
+                if(confirm("本当に削除しますか？")){
+                  //そのままsubmit（削除）
+                }else{
+                  //cancel
+                  return false;
+                }
+              });
+
+
                 
                 // Show aciton upon row hover
                 jQuery('.table tbody tr').hover(function(){
@@ -279,8 +291,8 @@
                 },function(){
                     jQuery(this).find('.table-action-hide a').animate({opacity: 0},100);
                 });
-    
             });
+              
         </script>
 
     </body>

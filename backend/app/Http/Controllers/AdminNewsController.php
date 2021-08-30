@@ -43,7 +43,7 @@ class AdminNewsController extends Controller
 
         $notice->save();
 
-        return redirect('admin/news');
+        return redirect('admin-news');
     }
 
     /**
@@ -66,7 +66,8 @@ class AdminNewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $notice = News::find($id);
+        return view('admin.news-edit',compact('notice'));
     }
 
     /**
@@ -78,7 +79,15 @@ class AdminNewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $notice=News::find($id);
+        
+        $notice->title = $request->input('title');
+        $notice->messages = $request->input('messages');
+
+        $notice->save();
+
+        return redirect('admin-news');
+
     }
 
     /**
@@ -89,6 +98,10 @@ class AdminNewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $notice = News::find($id);
+        $notice->delete();
+
+        return redirect('admin-news');
+
     }
 }

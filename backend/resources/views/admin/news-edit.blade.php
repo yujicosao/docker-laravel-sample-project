@@ -258,8 +258,9 @@
                     <div class="contentpanel">
                         <div class="row">
                             <div class="col-md-12">
-                                <form class="form-horizontal" method="POST" action="{{ route('admin-news.store') }}">
+                                <form class="form-horizontal" method="POST" action="{{ route('admin-news.update',$notice->id) }}">
                                     {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <div class="panel-btns">
@@ -273,14 +274,14 @@
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label">タイトル:</label>
                                                 <div class="col-sm-8">
-                                                    <input type="text" name="title" class="form-control" />
+                                                    <input type="text" name="title" value="{{ $notice->title }}" class="form-control" />
                                                 </div>
                                             </div><!-- form-group -->
                                         
                                             <div class="form-group">
                                                 <label class="col-sm-1 control-label">本文:</label>
                                                 <div class="col-sm-8">
-                                                    <textarea class="form-control" rows="5" name="messages"></textarea>
+                                                    <textarea class="form-control" rows="5" name="messages">{{ $notice->messages }}</textarea>
                                                 </div>
                                             </div><!-- form-group -->
                                         </div><!-- panel-body -->
