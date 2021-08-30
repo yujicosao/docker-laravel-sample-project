@@ -14,7 +14,7 @@ class AdminNewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::orderBy('created_at','desc')->get();
         return view('admin.news-index',compact('news'));
     }
 
@@ -25,7 +25,7 @@ class AdminNewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.news-create');
     }
 
     /**
@@ -36,7 +36,14 @@ class AdminNewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $notice = new News;
+
+        $notice->title = $request->input('title');
+        $notice->messages = $request->input('messages');
+
+        $notice->save();
+
+        return redirect('admin/news');
     }
 
     /**
