@@ -16,4 +16,7 @@ Route::get('news', 'NewsController@index')->name('news');
 Route::get('news/{id}', 'NewsController@show')->name('news_detail');
 
 // admin news
-Route::resource('admin-news', 'AdminNewsController');
+Route::resource('admin-news', 'AdminNewsController')->middleware('auth');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
