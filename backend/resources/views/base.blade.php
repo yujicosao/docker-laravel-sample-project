@@ -36,7 +36,7 @@
         <div class="container py-1">
           <div class="row align-items-center">
             <div class="col-8 col-md-8 col-lg-4">
-              <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Apart<span class="text-primary">.</span></strong></a></h1>
+              <h1 class="mb-0"><a href="{{ route('top')}}" class="text-white h2 mb-0"><strong>Apart<span class="text-primary">.</span></strong></a></h1>
             </div>
             <div class="col-4 col-md-4 col-lg-8">
               <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -45,7 +45,7 @@
 
                 <ul class="site-menu js-clone-nav d-none d-lg-block">
                   <li class="active">
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('top')}}">Home</a>
                   </li>
                   <li><a href="about.html">About</a></li>
                   <li class="has-children">
@@ -64,7 +64,7 @@
                       </li>
                     </ul>
                   </li>
-                  <li><a href="news.html">News</a></li>
+                  <li><a href="{{ route('news') }}">News</a></li>
                   <li><a href="contact.html">Contact</a></li>
                 </ul>
               </nav>
@@ -179,21 +179,21 @@
 
   </div>
 
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/mediaelement-and-player.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/bootstrap-datepicker.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/circleaudioplayer.js"></script>
+  <script src="{{ asset('js/jquery-3.3.1.min.js')}}"></script>
+  <script src="{{ asset('js/jquery-migrate-3.0.1.min.js')}}"></script>
+  <script src="{{ asset('js/jquery-ui.js')}}"></script>
+  <script src="{{ asset('js/popper.min.js')}}"></script>
+  <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('js/owl.carousel.min.js')}}"></script>
+  <script src="{{ asset('js/mediaelement-and-player.min.js')}}")></script>
+  <script src="{{ asset('js/jquery.stellar.min.js')}}"></script>
+  <script src="{{ asset('js/jquery.countdown.min.js')}}"></script>
+  <script src="{{ asset('js/jquery.magnific-popup.min.js')}}"></script>
+  <script src="{{ asset('js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{ asset('js/aos.js')}}"></script>
+  <script src="{{ asset('js/circleaudioplayer.js')}}"></script>
 
-  <script src="js/main.js"></script>
+  <script src="{{ asset('js/main.js')}}"></script>
     
   </body>
 </html>

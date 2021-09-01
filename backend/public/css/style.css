@@ -1793,3 +1793,11 @@ figure figcaption {
         font-weight: bold; }
       .featured-property-half .text ul li {
         margin-bottom: 10px; }
+
+
+.page-link{
+  padding:0 !important
+}    
+.pagination{
+  justify-content: center !important;
+}    

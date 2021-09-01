@@ -19,7 +19,7 @@
     <div class="row">
       @foreach($news as $notice)
         <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
-          <a href="single.html">
+          <a href="{{ route('news_detail', $notice->id) }}">
             @if ($notice->file_name)
               <img src="{{ asset('storage/images/' . $notice->file_name) }}" style="width:100%">
             @else
@@ -29,7 +29,7 @@
           </a>
           <div class="p-4 bg-white">
             <span class="d-block text-secondary small text-uppercase">{{ $notice->created_at }}</span>
-            <h2 class="h5 text-black mb-3"><a href="single.html">{{ $notice->title }}</a></h2>
+            <h2 class="h5 text-black mb-3"><a href="{{ route('news_detail', $notice->id) }}">{{ $notice->title }}</a></h2>
           </div>
         </div>
       @endforeach
@@ -41,15 +41,7 @@
     <div class="row">
       <div class="col-md-12 text-center">
         <div class="site-block-27">
-          <ul>
-            <li><a href="#">&lt;</a></li>
-            <li class="active"><span>1</span></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li><a href="#">&gt;</a></li>
-          </ul>
+          {{ $news->links() }}
         </div>
       </div>
     </div>
