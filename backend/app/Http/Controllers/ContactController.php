@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use Illuminate\Http\Request;
 use App\Mail\ContactSendmail;
 
@@ -44,7 +45,17 @@ class ContactController extends Controller
                 ->withInput($inputs);
         } else {
             \Mail::to($inputs['email'])->send(new ContactSendmail($inputs));
+
+            $contact = new Contact;
+            $contact->email = $request->input('email');
+            $contact->title = $request->input('title');
+            $contact->body = $request->input('body');
+            $contact->save();
+
             $request->session()->regenerateToken();
+
+
+
             return view('contact.thanks');
         }
 
