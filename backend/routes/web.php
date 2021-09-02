@@ -15,8 +15,14 @@ Route::get('/', 'IndexController@index')->name('top');
 Route::get('news', 'NewsController@index')->name('news');
 Route::get('news/{id}', 'NewsController@show')->name('news_detail');
 
+Route::get('page/{slug}', 'PageController@show')->name('page');
+
 // admin news
 Route::resource('admin-news', 'AdminNewsController')->middleware('auth');
+
+// admin pages
+Route::resource('admin-page', 'AdminPageController')->middleware('auth');
+
 // admin contact
 Route::get('admin-contact', 'AdminContactController@index')->middleware('auth')->name('admin-contact');
 
