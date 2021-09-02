@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index')->name('top');
+
 Route::get('news', 'NewsController@index')->name('news');
 Route::get('news/{id}', 'NewsController@show')->name('news_detail');
 

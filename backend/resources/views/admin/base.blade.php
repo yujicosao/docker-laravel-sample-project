@@ -150,6 +150,7 @@
                                 <li><a href="data-tables.html">Data Tables</a></li>
                             </ul> --}}
                         </li>
+                        <li><a href="{{ route('admin-page.index')}}"><i class="fa fa-bars"></i> <span>固定ページ</span></a></li>
                         <li><a href="{{ route('admin-contact')}}"><i class="fa fa-envelope-o"></i> <span>お問い合わせ</span></a></li>
                         {{-- <li class="parent"><a href=""><i class="fa fa-suitcase"></i> <span>UI Elements</span></a>
                             <ul class="children">
