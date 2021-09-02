@@ -47,7 +47,7 @@
                   <li class="active">
                     <a href="{{ route('top')}}">Home</a>
                   </li>
-                  <li><a href="about.html">About</a></li>
+                  <li><a href="{{ route('page','about')}}">About</a></li>
                   <li class="has-children">
                     <a href="apartments.html">Apartments</a>
                     <ul class="dropdown arrow-top">
