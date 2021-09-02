@@ -20,3 +20,9 @@ Route::resource('admin-news', 'AdminNewsController')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+// contact form
+Route::get('/contact', 'ContactController@index')->name('contact.index');
+Route::post('/contact/confirm', 'ContactController@confirm')->name('contact.confirm');
+Route::post('/contact/thanks', 'ContactController@send')->name('contact.send');
