@@ -17,7 +17,7 @@ class AdminNewsControllerTest extends TestCase
         parent::setUp();
         // テストユーザ作成
         $this->user = factory(User::class)->create();
-        $this->another_user = factory(User::class)->create();
+
         $notice = factory(News::class)->create();
         // logger($notice);
         logger('test');
@@ -29,10 +29,15 @@ class AdminNewsControllerTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function test_ログイン済みユーザーが管理画面「お知らせ一覧」に入れる()
     {
-        // $response = $this->get('/');
+        // ログインしていないので302が返される
+        $response = $this->get(route('admin-news.index'));
+        $response->assertStatus(302);
 
-        // $response->assertStatus(200);
+        // ログインユーザー　通常動作
+        $response = $this->actingAs($this->user)->get(route('admin-news.index'));
+        $response->assertStatus(200);
+        $response->assertSee('<h4>お知らせ</h4>');
     }
 }
