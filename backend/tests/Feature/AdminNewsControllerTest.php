@@ -9,8 +9,21 @@ use App\User;
 use App\News;
 use Faker\Generator as Faker;
 
+
 class AdminNewsControllerTest extends TestCase
 {
+    public function setUp(): void
+    {
+        parent::setUp();
+        // テストユーザ作成
+        $this->user = factory(User::class)->create();
+        $this->another_user = factory(User::class)->create();
+        $notice = factory(News::class)->create();
+        // logger($notice);
+        logger('test');
+    }
+
+
     /**
      * A basic feature test example.
      *
@@ -18,8 +31,8 @@ class AdminNewsControllerTest extends TestCase
      */
     public function testExample()
     {
-        $response = $this->get('/');
+        // $response = $this->get('/');
 
-        $response->assertStatus(200);
+        // $response->assertStatus(200);
     }
 }
