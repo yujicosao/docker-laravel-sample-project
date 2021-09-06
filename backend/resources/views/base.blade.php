@@ -27,9 +27,25 @@
   </head>
   <body>
 
-  
-    
-  
+
+  <div class="text-right">
+    @guest
+    ログインしていません
+    <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
+    <a class="btn btn-primary" href="{{ route('login') }}">{{ __('Login') }}</a>
+    @else
+    {{ Auth::user()->name }}様：ログイン中です
+    <a class="btn btn-primary" href="{{ route('logout') }}"
+    onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+     {{ __('Logout') }}
+ </a>
+
+ <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+     @csrf
+ </form>
+    @endguest
+  </div>
   <div class="site-wrap">
 
     <div class="site-navbar mt-4">
