@@ -30,16 +30,17 @@
 
   <div class="text-right">
     @guest
-    ログインしていません
     <a class="btn btn-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
     <a class="btn btn-primary" href="{{ route('login') }}">{{ __('Login') }}</a>
     @else
     {{ Auth::user()->name }}様：ログイン中です
+    <a href="{{ route('admin-news.index')}}" class="btn btn-primary">管理画面へ</a>
     <a class="btn btn-primary" href="{{ route('logout') }}"
     onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
      {{ __('Logout') }}
- </a>
+    </a>
+    
 
  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
      @csrf
