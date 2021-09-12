@@ -72,17 +72,16 @@ class AdminBookControllerTest extends TestCase
             // 以下２つは選択しないと弾かれます。
         ];
 
-        $response = $this->actingAs($this->user)->get(route('admin-book.edit',$book->id));
+        $response = $this->actingAs($this->user)->get(route('admin-book.edit', $book->id));
         // 正常を示すhttpステータス200が返ってくる
         $response->assertStatus(200);
 
         $update_url = route('admin-book.update', $book->id);
         $response = $this->put($update_url, $update_data);
 
-        $response->assertSessionHasNoErrors(); 
+        $response->assertSessionHasNoErrors();
         $response->assertStatus(302);
-        $response->assertRedirect('admin-book'); 
+        $response->assertRedirect('admin-book');
         $this->assertDatabaseHas('books', ['title' => '編集成功']);
-
     }
 }
