@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\User;
+use App\Book;
 
 class AdminBookControllerTest extends TestCase
 {
@@ -50,6 +51,38 @@ class AdminBookControllerTest extends TestCase
         $response->assertSee('<h4>ユニットテスト用一覧</h4>');
         // 作成したデータが表示されていることを確認
         $response->assertSeeText($book_data['title']);
+    }
+
+    /**
+     * A basic feature test example.
+     * @test
+     * @return void
+     */
+    public function ログインしていれば記事の編集ができる()
+    {
+        $book = new Book();
+        $book->title = 'title_hoge';
+        $book->body = 'body_hoge';
+        $savebook = $book->save();
+        logger($book->id);
         
+        $update_data = [
+            'title' => '編集成功',
+            'body' => '編集が成功しました',
+            // 以下２つは選択しないと弾かれます。
+        ];
+
+        $response = $this->actingAs($this->user)->get(route('admin-book.edit',$book->id));
+        // 正常を示すhttpステータス200が返ってくる
+        $response->assertStatus(200);
+
+        $update_url = route('admin-book.update', $book->id);
+        $response = $this->put($update_url, $update_data);
+
+        $response->assertSessionHasNoErrors(); 
+        $response->assertStatus(302);
+        $response->assertRedirect('admin-book'); 
+        $this->assertDatabaseHas('books', ['title' => '編集成功']);
+
     }
 }
