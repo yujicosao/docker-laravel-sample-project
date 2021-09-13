@@ -63,13 +63,11 @@ class AdminBookControllerTest extends TestCase
         $book = new Book();
         $book->title = 'title_hoge';
         $book->body = 'body_hoge';
-        $savebook = $book->save();
-        logger($book->id);
+        $book->save();
         
         $update_data = [
             'title' => '編集成功',
             'body' => '編集が成功しました',
-            // 以下２つは選択しないと弾かれます。
         ];
 
         $response = $this->actingAs($this->user)->get(route('admin-book.edit', $book->id));
@@ -83,5 +81,26 @@ class AdminBookControllerTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('admin-book');
         $this->assertDatabaseHas('books', ['title' => '編集成功']);
+    }
+
+    /**
+     * A basic feature test example.
+     * @test
+     * @return void
+     */
+    public function ログインしていれば削除できる(){
+        $book = new Book();
+        $book->title = 'title_hoge';
+        $book->body = 'body_hoge';
+        $book->save();
+
+        $delete_url = route('admin-book.destroy', $book->id);
+        $response = $this->actingAs($this->user)->delete($delete_url);
+        $response->assertSessionHasNoErrors(); 
+        $response->assertStatus(302);
+        $response->assertRedirect('admin-book');
+        
+        $this->assertDeleted($book);
+        $this->assertDatabaseMissing('books', ['id' => $book->id]);
     }
 }
