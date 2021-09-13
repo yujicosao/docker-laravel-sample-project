@@ -88,7 +88,8 @@ class AdminBookControllerTest extends TestCase
      * @test
      * @return void
      */
-    public function ログインしていれば削除できる(){
+    public function ログインしていれば削除できる()
+    {
         $book = new Book();
         $book->title = 'title_hoge';
         $book->body = 'body_hoge';
@@ -96,7 +97,7 @@ class AdminBookControllerTest extends TestCase
 
         $delete_url = route('admin-book.destroy', $book->id);
         $response = $this->actingAs($this->user)->delete($delete_url);
-        $response->assertSessionHasNoErrors(); 
+        $response->assertSessionHasNoErrors();
         $response->assertStatus(302);
         $response->assertRedirect('admin-book');
         
