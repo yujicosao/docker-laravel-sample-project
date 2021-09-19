@@ -4,7 +4,7 @@
 
 @section('content')
     
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('{{ asset('storage/images/' . $notice->file_name) }}');"
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('{{ $notice->file_name}}');"
     data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
     <div class="container">
       <div class="row align-items-center justify-content-center">
@@ -24,7 +24,7 @@
   
           @if ($notice->file_name)
             <figure>
-              <img src="{{ asset('storage/images/' . $notice->file_name) }}" alt="Image" class="img-fluid">
+              <img src="{{ $notice->file_name}}" alt="Image" class="img-fluid">
             </figure>
           @endif
   
