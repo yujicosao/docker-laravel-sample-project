@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use Storage;
 use Illuminate\Http\Request;
 
 class AdminNewsController extends Controller
@@ -42,16 +43,17 @@ class AdminNewsController extends Controller
             // 'file_name' => 'required'
         ]);
 
-        // 画像ファイル保存
-        logger($request->img);
-        $path = $request->img->store('public/images');
-        $filename = basename($path);
+        //s3アップロード開始
+        $image = $request->file('img');
+        logger('TEST111');
+        $path = Storage::disk('s3')->putFile('images', $image, 'public');
 
         $notice = new News;
 
         $notice->title = $request->input('title');
         $notice->messages = $request->input('messages');
-        $notice->file_name = $filename;
+        $notice->file_name = Storage::disk('s3')->url($path);
+        logger($notice->file_name);
         $notice->save();
 
         return redirect('admin-news');
