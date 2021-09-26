@@ -12,9 +12,9 @@
                                 <ul class="breadcrumb">
                                     <li><a href=""><i class="glyphicon glyphicon-home"></i></a></li>
                                     <li><a href="">Tables</a></li>
-                                    <li>お知らせ詳細</li>
+                                    <li>ユニットテスト用詳細</li>
                                 </ul>
-                                <h4>お知らせ詳細 「{{ $notice->title }}」 </h4>
+                                <h4>ユニットテスト用詳細 「{{ $book->title }}」 </h4>
                             </div>
                         </div><!-- media -->
                     </div><!-- pageheader -->
@@ -37,17 +37,16 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                              <td>{{ $notice->id }}</td>
-                                              <td>{{ $notice->title }}</td>
-                                              <td>{{ $notice->messages }}</td>
-                                              <td>{{ $notice->created_at }}</td>
+                                              <td>{{ $book->id }}</td>
+                                              <td>{{ $book->title }}</td>
+                                              <td>{{ $book->body }}</td>
+                                              <td>{{ $book->created_at }}</td>
                                             </tr>
                                             <tr>
                                         </tbody>
                                     </table>
                                 </div><!-- table-responsive -->
                             </div>
-                            <img src="{{ $notice->file_name }}" style="max-width:90%;margin:0 auto; display:block;">
                           </div><!-- row -->
                     </div><!-- contentpanel -->
                 </div><!-- mainpanel -->
