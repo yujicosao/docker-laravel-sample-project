@@ -26,10 +26,18 @@
                     </a>
                 </div><!-- header-left -->
                 
-                <div class="header-right">
-                    
+                <div class="header-right text-right">
+                    <a href="{{ route('top')}}" class="btn btn-info">フロントページへ</a>
                     <div class="pull-right">
-                      
+                    <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
+                        
                         
                         <div class="btn-group btn-group-list btn-group-notification">
                             <div class="dropdown-menu pull-right">
@@ -151,6 +159,7 @@
                             </ul> --}}
                         </li>
                         <li><a href="{{ route('admin-page.index')}}"><i class="fa fa-bars"></i> <span>固定ページ</span></a></li>
+                        <li><a href="{{ route('admin-book.index')}}"><i class="fa fa-bars"></i> <span>phpunitテスト用ページ</span></a></li>
                         <li><a href="{{ route('admin-contact')}}"><i class="fa fa-envelope-o"></i> <span>お問い合わせ</span></a></li>
                         {{-- <li class="parent"><a href=""><i class="fa fa-suitcase"></i> <span>UI Elements</span></a>
                             <ul class="children">

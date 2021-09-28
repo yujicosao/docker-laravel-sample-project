@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\News;
-use Storage;
+use App\Book;
 use Illuminate\Http\Request;
 
-class AdminNewsController extends Controller
+class AdminBookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class AdminNewsController extends Controller
      */
     public function index()
     {
-        $news = News::orderBy('created_at','desc')->get();
-        return view('admin.news-index',compact('news'));
+        $books = Book::orderBy('created_at','desc')->get();
+        return view('admin.book-index',compact('books'));
     }
 
     /**
@@ -26,7 +25,7 @@ class AdminNewsController extends Controller
      */
     public function create()
     {
-        return view('admin.news-create');
+        return view('admin.book-create');
     }
 
     /**
@@ -39,24 +38,20 @@ class AdminNewsController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'messages' => 'required',
+            'body' => 'required',
             // 'file_name' => 'required'
         ]);
 
-        //s3アップロード開始
-        $image = $request->file('img');
-        logger('TEST111');
-        $path = Storage::disk('s3')->putFile('images', $image, 'public');
+        // 画像ファイル保存
+        
 
-        $notice = new News;
+        $book = new Book;
 
-        $notice->title = $request->input('title');
-        $notice->messages = $request->input('messages');
-        $notice->file_name = Storage::disk('s3')->url($path);
-        logger($notice->file_name);
-        $notice->save();
+        $book->title = $request->input('title');
+        $book->body = $request->input('body');
+        $book->save();
 
-        return redirect('admin-news');
+        return redirect('admin-book');
     }
 
     /**
@@ -67,8 +62,8 @@ class AdminNewsController extends Controller
      */
     public function show($id)
     {
-        $notice = News::find($id);
-        return view('admin.news-show',compact('notice'));
+        $book = Book::find($id);
+        return view('admin.book-show',compact('book'));
     }
 
     /**
@@ -79,8 +74,8 @@ class AdminNewsController extends Controller
      */
     public function edit($id)
     {
-        $notice = News::find($id);
-        return view('admin.news-edit',compact('notice'));
+        $book = Book::find($id);
+        return view('admin.book-edit',compact('book'));
     }
 
     /**
@@ -94,17 +89,17 @@ class AdminNewsController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'messages' => 'required',
+            'body' => 'required',
         ]);
 
-        $notice=News::find($id);
+        $book = Book::find($id);
 
-        $notice->title = $request->input('title');
-        $notice->messages = $request->input('messages');
+        $book->title = $request->input('title');
+        $book->body = $request->input('body');
 
-        $notice->save();
+        $book->save();
 
-        return redirect('admin-news');
+        return redirect('admin-book');
 
     }
 
@@ -116,10 +111,10 @@ class AdminNewsController extends Controller
      */
     public function destroy($id)
     {
-        $notice = News::find($id);
-        $notice->delete();
+        $book = Book::find($id);
+        $book->delete();
 
-        return redirect('admin-news');
+        return redirect('admin-book');
 
     }
 }

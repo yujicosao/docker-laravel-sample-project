@@ -21,7 +21,7 @@
         <div class="col-md-6 col-lg-4 mb-5" data-aos="fade-up" data-aos-delay="100">
           <a href="{{ route('news_detail', $notice->id) }}">
             @if ($notice->file_name)
-              <img src="{{ asset('storage/images/' . $notice->file_name) }}" style="width:100%">
+              <img src="{{ $notice->file_name }}" style="width:100%">
             @else
               <img src="https://placehold.jp/1900x1268.png?text=No Image" style="width:100%">
               

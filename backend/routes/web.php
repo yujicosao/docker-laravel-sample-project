@@ -24,6 +24,9 @@ Route::resource('admin-news', 'AdminNewsController')->middleware('auth');
 // admin pages
 Route::resource('admin-page', 'AdminPageController')->middleware('auth');
 
+// admin book
+Route::resource('admin-book', 'AdminBookController')->middleware('auth');
+
 // admin contact
 Route::get('admin-contact', 'AdminContactController@index')->middleware('auth')->name('admin-contact');
 
