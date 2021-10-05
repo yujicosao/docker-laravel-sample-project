@@ -18,20 +18,13 @@
         <div class="featured-property-half d-flex">
         <div class="image" style="background-image: url('images/hero_bg_1.jpg')"></div>
         <div class="text">
-            <h2>Property Information</h2>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis quae obcaecati doloribus distinctio, aliquam vero? Molestias, amet, eveniet.</p>
-            <ul class="property-list-details mb-5">
-            <li class="text-black">Property Name: <strong class="text-black">Marga Luxury Suite</strong></li>
-            <li>Room: <strong>2</strong></li>
-            <li>Total Area: <strong>482 Square Feets</strong></li>
-            <li>Category: <strong>Modern House</strong></li>
-            <li>Lunch Date: Jan 20, 2019<strong></strong></li>
-            </ul>
-            <p><a href="#" class="btn btn-primary px-4 py-3">Get Details</a></p>
+            <h2>東京の天気</h2>
+            <img src="{{ $wheather_info['wheather_image'] }}" alt="">
+            <p class="mb-5">{{ $wheather_info['wheather_text'] }}</p>
+            <p class="mb-5">{{ $wheather_info['wheather_body'] }}</p>
         </div>
         </div>
     </div>
-
     <div class="site-section">
         <div class="container">
         <div class="row">
@@ -87,9 +80,9 @@
         </div>
         </div>
     </div>
-    
 
-    
+
+
     <div class="site-section">
 
         <div class="container">
@@ -100,7 +93,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, fugit nam obcaecati fuga itaque deserunt officia, error reiciendis ab quod?</p>
             </div>
         </div>
-        
+
         <div class="site-block-retro d-block d-md-flex">
 
             <a href="#" class="col1 unit-9 no-height" data-aos="fade-up" data-aos-delay="100">
@@ -132,11 +125,11 @@
             </div>
 
         </div>
-        
+
         </div>
     </div>
 
-    
+
     <div class="site-section block-13">
         <div class="container" data-aos="fade-up">
         <div class="row">
@@ -146,9 +139,9 @@
             </div>
         </div>
         <div class="nonloop-block-13 owl-carousel">
-            
+
             <div class="text-center p-3 p-md-5 bg-white">
-            <div class="mb-4">            
+            <div class="mb-4">
                 <img src="images/person_1.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
             </div>
             <div class="text-black">
@@ -158,7 +151,7 @@
             </div>
 
             <div class="text-center p-3 p-md-5 bg-white">
-            <div class="mb-4">            
+            <div class="mb-4">
                 <img src="images/person_2.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
             </div>
             <div class="text-black">
@@ -168,7 +161,7 @@
             </div>
 
             <div class="text-center p-3 p-md-5 bg-white">
-            <div class="mb-4">            
+            <div class="mb-4">
                 <img src="images/person_3.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
             </div>
             <div class="text-black">
@@ -178,7 +171,7 @@
             </div>
 
             <div class="text-center p-3 p-md-5 bg-white">
-            <div class="mb-4">            
+            <div class="mb-4">
                 <img src="images/person_1.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
             </div>
             <div class="text-black">
@@ -188,7 +181,7 @@
             </div>
 
             <div class="text-center p-3 p-md-5 bg-white">
-            <div class="mb-4">            
+            <div class="mb-4">
                 <img src="images/person_2.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
             </div>
             <div class="text-black">
@@ -198,7 +191,7 @@
             </div>
 
             <div class="text-center p-3 p-md-5 bg-white">
-            <div class="mb-4">            
+            <div class="mb-4">
                 <img src="images/person_4.jpg" alt="Image" class="w-50 mx-auto img-fluid rounded-circle">
             </div>
             <div class="text-black">
@@ -209,11 +202,11 @@
 
         </div>
         </div>
-    </div>  
-    
+    </div>
 
-    
-    
+
+
+
 
     <div class="site-section bg-light">
         <div class="container">
@@ -229,7 +222,7 @@
             <div class="p-4 bg-white">
                 <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
                 <h2 class="h5 text-black mb-3"><a href="single.html">Fugit nam obcaecati fuga itaque</a></h2>
-                
+
             </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
@@ -237,7 +230,7 @@
             <div class="p-4 bg-white">
                 <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
                 <h2 class="h5 text-black mb-3"><a href="single.html">Fugit nam obcaecati fuga itaque</a></h2>
-                
+
             </div>
             </div>
             <div class="col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
@@ -245,7 +238,7 @@
             <div class="p-4 bg-white">
                 <span class="d-block text-secondary small text-uppercase">Jan 20th, 2019</span>
                 <h2 class="h5 text-black mb-3"><a href="single.html">Fugit nam obcaecati fuga itaque</a></h2>
-                
+
             </div>
             </div>
         </div>
@@ -265,6 +258,5 @@
         </div>
     </div>
 
-  
+
 @stop
-    
