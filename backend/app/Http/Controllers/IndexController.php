@@ -18,17 +18,16 @@ class IndexController extends Controller
 
         $response = $client->request($method, $url);
 
-        $posts = $response->getBody();
-        $posts = json_decode($posts, true);
-        $wheather_text = $posts['forecasts'][0]['image']['title'];
-        $wheather_image = $posts['forecasts'][0]['image']['url'];
-        $wheather_body = $posts['description']['text'];
+        $response = $response->getBody();
+        $response = json_decode($response, true);
+        $wheather_text = $response['forecasts'][0]['image']['title'];
+        $wheather_image = $response['forecasts'][0]['image']['url'];
+        $wheather_body = $response['description']['text'];
         $wheather_info = [
             'wheather_text' => $wheather_text,
             'wheather_image' => $wheather_image,
             'wheather_body' => $wheather_body
         ];
-        logger($wheather_info);
         return view('index', ['wheather_info' => $wheather_info]);
     }
 }
