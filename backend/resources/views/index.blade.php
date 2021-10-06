@@ -19,9 +19,9 @@
         <div class="image" style="background-image: url('images/hero_bg_1.jpg')"></div>
         <div class="text">
             <h2>東京の天気</h2>
-            <img src="{{ $wheather_info['wheather_image'] }}" alt="">
-            <p class="mb-5">{{ $wheather_info['wheather_text'] }}</p>
-            <p class="mb-5">{{ $wheather_info['wheather_body'] }}</p>
+            <img src="{{ $weather_info['weather_image'] }}" alt="">
+            <p class="mb-5">{{ $weather_info['weather_text'] }}</p>
+            <p class="mb-5">{{ $weather_info['weather_body'] }}</p>
         </div>
         </div>
     </div>

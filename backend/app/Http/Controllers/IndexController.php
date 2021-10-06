@@ -18,14 +18,14 @@ class IndexController extends Controller
 
         $response = $response->getBody();
         $response = json_decode($response, true);
-        $wheather_text = $response['forecasts'][0]['image']['title'];
-        $wheather_image = $response['forecasts'][0]['image']['url'];
-        $wheather_body = $response['description']['text'];
-        $wheather_info = [
-            'wheather_text' => $wheather_text,
-            'wheather_image' => $wheather_image,
-            'wheather_body' => $wheather_body
+        $weather_text = $response['forecasts'][0]['image']['title'];
+        $weather_image = $response['forecasts'][0]['image']['url'];
+        $weather_body = $response['description']['text'];
+        $weather_info = [
+            'weather_text' => $weather_text,
+            'weather_image' => $weather_image,
+            'weather_body' => $weather_body
         ];
-        return view('index', ['wheather_info' => $wheather_info]);
+        return view('index', ['weather_info' => $weather_info]);
     }
 }
