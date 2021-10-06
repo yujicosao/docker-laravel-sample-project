@@ -9,8 +9,6 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $tag_id = "laravel";
-
         $url = "https://weather.tsukumijima.net/api/forecast/city/130010";
         $method = "GET";
 
