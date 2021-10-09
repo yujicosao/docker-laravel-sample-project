@@ -20,7 +20,7 @@ class IndexController extends Controller
         // 最後に取得した日付から1時間経過していたら、apiから最新データを取得する
         $currentdate = new Carbon();
         $latest_weather = Weather::orderBy('id', 'desc')->get();
-        if ($currentdate->addHours(1) > $latest_weather[0]->created_at) {
+        if ($currentdate->addHours(-1) > $latest_weather[0]->created_at) {
             // 既存の最新データをdbから削除
             Weather::query()->delete();
             // 外部apiにて天気情報を取得
