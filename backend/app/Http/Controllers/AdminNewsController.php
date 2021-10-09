@@ -15,8 +15,8 @@ class AdminNewsController extends Controller
      */
     public function index()
     {
-        $news = News::orderBy('created_at','desc')->get();
-        return view('admin.news-index',compact('news'));
+        $news = News::orderBy('created_at', 'desc')->get();
+        return view('admin.news-index', compact('news'));
     }
 
     /**
@@ -52,8 +52,11 @@ class AdminNewsController extends Controller
 
         $notice->title = $request->input('title');
         $notice->messages = $request->input('messages');
-        $notice->file_name = Storage::disk('s3')->url($path);
-        logger($notice->file_name);
+        $file_name = Storage::disk('s3')->url($path);
+        $replacing_str = 'd38ihwsypis9fk.cloudfront.net/';
+        $replaced_str = 'corporateimagesbacket.s3.ap-northeast-1.amazonaws.com/';
+        $file_name = str_replace($replaced_str, $replacing_str, $file_name);
+        $notice->file_name = $file_name;
         $notice->save();
 
         return redirect('admin-news');
@@ -68,7 +71,7 @@ class AdminNewsController extends Controller
     public function show($id)
     {
         $notice = News::find($id);
-        return view('admin.news-show',compact('notice'));
+        return view('admin.news-show', compact('notice'));
     }
 
     /**
@@ -80,7 +83,7 @@ class AdminNewsController extends Controller
     public function edit($id)
     {
         $notice = News::find($id);
-        return view('admin.news-edit',compact('notice'));
+        return view('admin.news-edit', compact('notice'));
     }
 
     /**
@@ -97,7 +100,7 @@ class AdminNewsController extends Controller
             'messages' => 'required',
         ]);
 
-        $notice=News::find($id);
+        $notice = News::find($id);
 
         $notice->title = $request->input('title');
         $notice->messages = $request->input('messages');
@@ -105,7 +108,6 @@ class AdminNewsController extends Controller
         $notice->save();
 
         return redirect('admin-news');
-
     }
 
     /**
@@ -120,6 +122,5 @@ class AdminNewsController extends Controller
         $notice->delete();
 
         return redirect('admin-news');
-
     }
 }
