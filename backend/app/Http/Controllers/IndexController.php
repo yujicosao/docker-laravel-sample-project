@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Redis;
 use App\Weather;
 
 class IndexController extends Controller
@@ -12,6 +13,10 @@ class IndexController extends Controller
     public function index()
     {
         $weather_info = $this->getWeather();
+
+        Redis::command('SET', ['mykeys1', 'abc']);
+        $get_data = Redis::command('GET',['mykeys1']);
+        logger($get_data);
         return view('index', ['weather_info' => $weather_info]);
     }
 
