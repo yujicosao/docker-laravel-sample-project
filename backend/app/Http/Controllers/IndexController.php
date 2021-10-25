@@ -21,12 +21,14 @@ class IndexController extends Controller
     {
         // 最後に取得した日付から1時間経過していたら、apiから最新データを取得する
         $currentdate = new Carbon();
-        $latest_weather = Redis::command('GET', ['weather_created_at']);
-        if ($currentdate->addHours(-1) > $latest_weather) {
-            // 外部apiにて天気情報を取得
+        $minus_one_date = new Carbon();
+        $minus_one_date->addHours(-1);
+        $latest_weather_created_at = Redis::command('GET', ['weather_created_at']);
+
+        if ($minus_one_date > $latest_weather_created_at) {
+            // 外部apiにて天気情報を取得し、redisに代入
             $url = "https://weather.tsukumijima.net/api/forecast/city/130010";
             $method = "GET";
-
             $client = new Client();
             $response = $client->request($method, $url);
             $response = $response->getBody();
@@ -41,7 +43,7 @@ class IndexController extends Controller
             Redis::command('SET', ['weather_created_at', $currentdate]);
         }
 
-        //すでにredisにある天気情報もしくは上記if文内で取得した最新天気情報を代入
+        //すでにredisにある天気情報もしくは上記if文内で取得した最新天気情報を戻り値として代入
         $weather_info = [
             'weather_text' => Redis::command('GET', ['weather_text']),
             'weather_image' => Redis::command('GET', ['weather_image']),
