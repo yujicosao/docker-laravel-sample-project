@@ -12,7 +12,6 @@ class IndexController extends Controller
     public function index()
     {
         $weather_info = $this->getWeather();
-
         return view('index', ['weather_info' => $weather_info]);
     }
 
@@ -20,7 +19,7 @@ class IndexController extends Controller
     {
         // 最後に取得した日付から1時間経過していたら、apiから最新データを取得する
         $minus_one_hour = new Carbon();
-        $minus_one_hour->addHours(-1);
+        $minus_one_hour->addHours(config('const.getWeatherHour'));
         $latest_weather_created_at = Redis::command('GET', ['weather_created_at']);
 
         if ($minus_one_hour > $latest_weather_created_at) {
