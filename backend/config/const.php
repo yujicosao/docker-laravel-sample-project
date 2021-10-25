@@ -1,5 +1,6 @@
 <?php
 return [
+    // 天気情報取得に関するconst
     'weather' =>
         [
             // 取得間隔調整
