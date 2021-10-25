@@ -1,4 +1,9 @@
 <?php
 return [
-    'getWeatherHour' => -1,
+    'weather' =>
+        [
+            'intervalHour' => -1,
+            'regionUrl' => 'https://weather.tsukumijima.net/api/forecast/city/130010'
+        ]
+
 ];
