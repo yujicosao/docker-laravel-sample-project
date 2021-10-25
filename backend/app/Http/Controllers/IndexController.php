@@ -24,7 +24,6 @@ class IndexController extends Controller
         $latest_weather = Redis::command('GET', ['weather_created_at']);
         if ($currentdate->addHours(-1) > $latest_weather) {
             // 外部apiにて天気情報を取得
-            logger('TEST');
             $url = "https://weather.tsukumijima.net/api/forecast/city/130010";
             $method = "GET";
 
