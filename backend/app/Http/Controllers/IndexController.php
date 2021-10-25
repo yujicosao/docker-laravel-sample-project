@@ -20,7 +20,7 @@ class IndexController extends Controller
     private function getWeather()
     {
         // 最後に取得した日付から1時間経過していたら、apiから最新データを取得する
-        $current_date = new Carbon();
+        logger(new Carbon);
         $minus_one_hour = new Carbon();
         $minus_one_hour->addHours(-1);
         $latest_weather_created_at = Redis::command('GET', ['weather_created_at']);
@@ -40,7 +40,7 @@ class IndexController extends Controller
             Redis::command('SET', ['weather_text', $weather_text]);
             Redis::command('SET', ['weather_image', $weather_image]);
             Redis::command('SET', ['weather_body', $weather_body]);
-            Redis::command('SET', ['weather_created_at', $current_date]);
+            Redis::command('SET', ['weather_created_at', new Carbon()]);
         }
 
         //すでにredisにある天気情報もしくは上記if文内で取得した最新天気情報を戻り値として代入
