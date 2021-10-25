@@ -16,7 +16,6 @@ class IndexController extends Controller
 
         Redis::command('SET', ['mykeys1', 'abc']);
         $get_data = Redis::command('GET',['mykeys1']);
-        logger($get_data);
         return view('index', ['weather_info' => $weather_info]);
     }
 
@@ -24,11 +23,11 @@ class IndexController extends Controller
     {
         // 最後に取得した日付から1時間経過していたら、apiから最新データを取得する
         $currentdate = new Carbon();
-        $latest_weather = Weather::orderBy('id', 'desc')->get();
-        if ($currentdate->addHours(-1) > $latest_weather[0]->created_at) {
-            // 既存の最新データをdbから削除
-            Weather::query()->delete();
+        $latest_weather = Redis::command('GET', ['weather_created_at']);
+
+        if ($currentdate->addHours(-1) > $latest_weather) {
             // 外部apiにて天気情報を取得
+            logger('TEST');
             $url = "https://weather.tsukumijima.net/api/forecast/city/130010";
             $method = "GET";
 
@@ -40,25 +39,26 @@ class IndexController extends Controller
             $weather_image = $response['forecasts'][0]['image']['url'];
             $weather_body = $response['description']['text'];
 
-            // 取得した天気情報をdbに保存
-            $weather = new Weather();
-            $weather->text = $weather_text;
-            $weather->image = $weather_image;
-            $weather->body = $weather_body;
-            $weather->save();
+            Redis::command('SET', ['weather_text', $weather_text]);
+            Redis::command('SET', ['weather_image', $weather_image]);
+            Redis::command('SET', ['weather_body', $weather_body]);
+            Redis::command('SET', ['weather_created_at', $currentdate]);
 
             // 取得した天気情報をviewに渡すために連想配列に挿入
             $weather_info = [
-                'weather_text' => $weather_text,
-                'weather_image' => $weather_image,
-                'weather_body' => $weather_body
+                'weather_text' => Redis::command('GET', ['weather_text']),
+                'weather_image' => Redis::command('GET', ['weather_image']),
+                'weather_body' => Redis::command('GET', ['weather_body']),
+                'weather_created_at' => Redis::command('GET', ['weather_created_at'])
             ];
         } else {
             //dbにある最新の天気情報を取得
+            logger('TEST');
             $weather_info = [
-                'weather_text' => $latest_weather[0]->text,
-                'weather_image' => $latest_weather[0]->image,
-                'weather_body' => $latest_weather[0]->body
+                'weather_text' => Redis::command('GET', ['weather_text']),
+                'weather_image' => Redis::command('GET', ['weather_image']),
+                'weather_body' => Redis::command('GET', ['weather_body']),
+                'weather_created_at' => Redis::command('GET', ['weather_created_at'])
             ];
         }
         return $weather_info;
