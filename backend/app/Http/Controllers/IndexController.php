@@ -15,7 +15,7 @@ class IndexController extends Controller
         return view('index', ['weather_info' => $weather_info]);
     }
 
-    private function getWeather()
+    private function getWeather():array
     {
         // 最後に取得した日付から1時間経過していたら、apiから最新データを取得する
         $interval_hour = new Carbon();
