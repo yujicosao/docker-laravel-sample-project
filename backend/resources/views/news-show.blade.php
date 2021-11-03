@@ -3,15 +3,15 @@
 @section('title', 'Apart NEWS')
 
 @section('content')
-    
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('{{ $notice->file_name}}');"
+
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('{{ $notice['file_name'] }}');"
     data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
     <div class="container">
       <div class="row align-items-center justify-content-center">
         <div class="col-md-7 text-center" data-aos="fade-up" data-aos-delay="400">
 
-          <h1 class="text-white">{{ $notice->title }}</h1>
-          <p>{{ $notice->created_at }}</p>
+          <h1 class="text-white">{{ $notice['title'] }}</h1>
+          <p>{{ $notice['created_at'] }}</p>
         </div>
       </div>
     </div>
@@ -21,17 +21,17 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8">
-  
-          @if ($notice->file_name)
+
+          @if ($notice['file_name'])
             <figure>
-              <img src="{{ $notice->file_name}}" alt="Image" class="img-fluid">
+              <img src="{{ $notice['file_name'] }}" alt="Image" class="img-fluid">
             </figure>
           @endif
-  
-          <p>{{ $notice->messages }}</p>
+
+          <p>{{ $notice['messages'] }}</p>
         </div>
-  
-  
+
+
         <div class="col-md-3 ml-auto">
           {{-- <div class="mb-5">
             <h3 class="h5 text-white mb-3">Search</h3>
@@ -41,7 +41,7 @@
               </div>
             </form>
           </div> --}}
-  
+
           <div class="mb-5">
             <h3 class="h5 mb-3">最新記事</h3>
             <ul class="list-unstyled">
@@ -51,7 +51,7 @@
             </ul>
           </div>
         </div>
-  
+
       </div>
     </div>
   </div>
@@ -74,5 +74,5 @@
     </div>
   </div>
 
-    
+
 @stop

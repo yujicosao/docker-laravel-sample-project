@@ -18,6 +18,12 @@ services:
     build: ./infra/mysql
     volumes:
       - db-store:/var/lib/mysql
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data/redis:/data"
 
 volumes:
   db-store:
