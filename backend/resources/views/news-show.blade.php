@@ -3,7 +3,6 @@
 @section('title', 'Apart NEWS')
 
 @section('content')
-
     <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url('{{ $notice['file_name'] }}');"
     data-aos="fade" data-stellar-background-ratio="0.5" data-aos="fade">
     <div class="container">
@@ -41,7 +40,9 @@
               </div>
             </form>
           </div> --}}
-
+          <div id="app">
+            <example-component tests="{{ $notice['id']}}"></example-component>
+          </div>
           <div class="mb-5">
             <h3 class="h5 mb-3">最新記事</h3>
             <ul class="list-unstyled">

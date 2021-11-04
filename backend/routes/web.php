@@ -39,3 +39,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::post('/contact/confirm', 'ContactController@confirm')->name('contact.confirm');
 Route::post('/contact/thanks', 'ContactController@send')->name('contact.send');
+
+Route::get('/comment/{id}', 'CommentController@index');

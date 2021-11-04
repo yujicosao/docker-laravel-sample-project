@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
 
@@ -23,7 +24,9 @@ class NewsController extends Controller
         $notice = $this->getNotice($id);
         $latest_news = News::orderBy('created_at','desc')->take(5)->get();
 
-        return view('news-show',compact('notice','latest_news'));
+        $notices = News::find($id);
+        $comments = $notices->comments;
+        return view('news-show',compact('notice','latest_news','comments'));
 
     }
     private function getNotice($id)
