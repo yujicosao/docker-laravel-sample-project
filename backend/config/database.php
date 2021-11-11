@@ -34,7 +34,6 @@ return [
     */
 
     'connections' => [
-
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
@@ -90,7 +89,15 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-
+       'testing' => [
+           'driver'   => 'sqlite',
+           'database' => ':memory:', // SQLiteのインメモリ機能を使用
+           'prefix'   => '',
+           'options'  => [
+               // テストデータの永続化
+               PDO::ATTR_PERSISTENT => false,
+           ],
+       ],
     ],
 
     /*

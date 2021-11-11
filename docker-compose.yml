@@ -16,8 +16,16 @@ services:
 
   db:
     build: ./infra/mysql
+    ports:
+      - 3306:3306
     volumes:
       - db-store:/var/lib/mysql
+  db_testing:
+    build: ./infra/mysql_testing
+    ports:
+      - 3307:3306
+    volumes:
+      - db-store_testing:/var/lib/mysql
   redis:
     image: "redis:latest"
     ports:
@@ -27,3 +35,4 @@ services:
 
 volumes:
   db-store:
+  db-store_testing:
