@@ -30,9 +30,23 @@
         <div class="container">
         <div class="row">
             <div class="site-section-heading text-center mb-5 w-border col-md-6 mx-auto">
-            <h2 class="mb-5">Browse Apartments</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet, fugit nam obcaecati fuga itaque deserunt
-                officia, error reiciendis ab quod?</p>
+                <h2 class="mb-5">この学習サイトで実装したこと</h2>
+                <ul class="text-left">
+                    <li>AWSを用いてのサイトデプロイ(EC2・S3・CloudFront使用)</li>
+                    <li>画像保存をS3にて行う</li>
+                    <li>S3に保存した画像表示をCloudFront経由に変更</li>
+                    <li>AWS route53を用いた独自ドメインの取得/紐付け</li>
+                    <li>dockerを用いての環境構築(webサーバー[nginx]・appサーバー・dbサーバー[mysql])</li>
+                    <li>CRUD実装</li>
+                    <li>phpunitを用いてのユニットテスト実装</li>
+                    <li>dockerコンテナを用いてテスト用dbサーバー構築</li>
+                    <li>管理者ユーザー機能実装</li>
+                    <li>ページネーション機能実装</li>
+                    <li>外部apiを用いての天気情報表示機能実装</li>
+                    <li>vuejs、axiosによる非同期通信の実装</li>
+                    <li>git/githubを用いての実装管理</li>
+                    <li>redis環境構築及び、redisを用いてのデータ管理</li>
+                </ul>
             </div>
         </div>
         <div class="row">
