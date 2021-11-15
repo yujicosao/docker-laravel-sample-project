@@ -8,8 +8,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-md-8 text-center" data-aos="fade-up" data-aos-delay="400">
             <h1 class="mb-4">これは小棹雄司の学習用サイトです</h1>
-            <p class="mb-5">githubリポジトリ<br><a href="https://github.com/yujicosao/docker-laravel-sample-project">https://github.com/yujicosao/docker-laravel-sample-project</p>
-            <p><a href="#" class="btn btn-primary px-5 py-3">Take a Tour</a></p>
+            <p><a href="https://github.com/yujicosao/docker-laravel-sample-project" class="btn btn-primary px-5 py-3" target="_blank">githubリポジトリへ</a></p>
             </div>
         </div>
         </div>
